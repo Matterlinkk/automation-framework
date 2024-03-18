@@ -1,3 +1,5 @@
+import allure
+
 from pages.uitesting.qa_practice.selenium.base_page import BasePage
 
 from selenium.webdriver.common.by import By
@@ -12,16 +14,20 @@ class SimpleButtonPage(BasePage):
         super().__init__(browser)
 
     def open(self):
-        self.browser.get('https://www.qa-practice.com/elements/button/simple')
+        with allure.step('Open the web page'):
+            self.browser.get('https://www.qa-practice.com/elements/button/simple')
 
     @property
     def button(self):
-        return self.find(button_args)
+        with allure.step('Find "Submit" button'):
+            return self.find(button_args)
 
     @property
     def button_is_displayed(self):
-        return self.button.is_displayed()
+        with allure.step('Check is button displayed'):
+            return self.button.is_displayed()
 
     @property
     def result_text(self):
-        return self.find(result_args).text
+        with allure.step('Copy result text'):
+            return self.find(result_args).text

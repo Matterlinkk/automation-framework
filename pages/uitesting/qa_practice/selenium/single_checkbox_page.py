@@ -1,3 +1,5 @@
+import allure
+
 from pages.uitesting.qa_practice.selenium.base_page import BasePage
 from selenium.webdriver.common.by import By
 
@@ -12,21 +14,27 @@ class SingleCheckboxPage(BasePage):
         super().__init__(browser)
 
     def open(self):
-        self.browser.get('https://www.qa-practice.com/elements/checkbox/single_checkbox')
+        with allure.step('Open the web page'):
+            self.browser.get('https://www.qa-practice.com/elements/checkbox/single_checkbox')
 
     @property
     def __checkbox(self):
-        return self.find(checkbox_args)
+        with allure.step('Find checkbox'):
+            return self.find(checkbox_args)
 
     def checkbox_click(self):
-        self.__checkbox.click()
+        with allure.step('Click checkbox'):
+            self.__checkbox.click()
 
     @property
     def __button(self):
-        return self.find(submit_button)
+        with allure.step('Find button'):
+            return self.find(submit_button)
 
     def button_click(self):
-        self.__button.click()
+        with allure.step('Click button'):
+            self.__button.click()
 
     def result_text(self):
-        return self.find(result_text).text
+        with allure.step('Copy result text'):
+            return self.find(result_text).text

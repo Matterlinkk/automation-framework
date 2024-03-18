@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from pages.uitesting.qa_practice.selenium.base_page import BasePage
@@ -12,16 +13,19 @@ class PasswordInputPage(BasePage):
         self.password = password
 
     def open(self):
-        self.browser.get('https://www.qa-practice.com/elements/input/passwd')
+        with allure.step('Open the web page'):
+            self.browser.get('https://www.qa-practice.com/elements/input/passwd')
 
     @property
     def __input(self):
         return self.find(input_field_args)
 
     def paste_text_to_input(self):
-        self.__input.send_keys(self.password)
-        self.__input.send_keys(Keys.ENTER)
+        with allure.step('Fill the input-field'):
+            self.__input.send_keys(self.password)
+            self.__input.send_keys(Keys.ENTER)
 
     @property
     def result_text(self):
-        return self.find(result_text_args).text
+        with allure.step('Copy result text'):
+            return self.find(result_text_args).text
