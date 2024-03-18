@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.support.select import Select
 
 from pages.uitesting.qa_practice.selenium.base_page import BasePage
@@ -14,20 +15,25 @@ class DisplayedButtonPage(BasePage):
         super().__init__(browser)
 
     def open(self):
-        self.browser.get('https://www.qa-practice.com/elements/button/disabled')
+        with allure.step('Open the web page'):
+            self.browser.get('https://www.qa-practice.com/elements/button/disabled')
 
     @property
     def __drop_down_list(self):
-        return self.find(drop_down_list_args)
+        with allure.step('Find dropdown list'):
+            return self.find(drop_down_list_args)
 
     def change_drop_down_list_to_enable(self):
-        state = Select(self.__drop_down_list)
-        state.select_by_value("enabled")
+        with allure.step('Select state "enable" in dropdown list'):
+            state = Select(self.__drop_down_list)
+            state.select_by_value("enabled")
 
     @property
     def button(self):
-        return self.find(submit_button_args)
+        with allure.step('Find the button'):
+            return self.find(submit_button_args)
 
     @property
     def result_text(self):
-        return self.find(result_text).text
+        with allure.step('Copy result value'):
+            return self.find(result_text).text

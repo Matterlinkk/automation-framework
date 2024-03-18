@@ -1,3 +1,5 @@
+import allure
+
 from pages.uitesting.qa_practice.selenium.base_page import BasePage
 from selenium.webdriver.common.by import By
 
@@ -10,20 +12,25 @@ class NewTabLinkPage(BasePage):
         super().__init__(browser)
 
     def open(self):
-        self.browser.get('https://www.qa-practice.com/elements/new_tab/link')
+        with allure.step('Open the web page'):
+            self.browser.get('https://www.qa-practice.com/elements/new_tab/link')
 
     @property
     def __link(self):
-        return self.find(link_args)
+        with allure.step('Find link'):
+            return self.find(link_args)
 
     def click_link(self):
-       self.__link.click()
+        with allure.step('Open the link in new tab'):
+            self.__link.click()
 
     def switch_page(self):
-        self.browser.execute_script("arguments[0].click();", self.__link)
+        with allure.step('Change tab'):
+            self.browser.execute_script("arguments[0].click();", self.__link)
 
-        self.browser.switch_to.window(self.browser.window_handles[1])
+            self.browser.switch_to.window(self.browser.window_handles[1])
 
     @property
     def result_text(self):
-        return self.find(result_text_args).text
+        with allure.step('Copy result text'):
+            return self.find(result_text_args).text

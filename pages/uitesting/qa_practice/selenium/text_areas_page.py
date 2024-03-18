@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.common.by import By
 from pages.uitesting.qa_practice.selenium.base_page import BasePage
 from selenium.webdriver.common.action_chains import ActionChains
@@ -16,40 +17,50 @@ class TextAreasPage(BasePage):
         self.value1, self.value2, self.value3 = args
 
     def open(self):
-        self.browser.get('https://www.qa-practice.com/elements/textarea/textareas')
+        with allure.step('Open the web page'):
+            self.browser.get('https://www.qa-practice.com/elements/textarea/textareas')
 
     @property
     def __chapter_1(self):
-        return self.find(chapter_1)
+        with allure.step('Find first chapter'):
+            return self.find(chapter_1)
 
     @property
     def __chapter_2(self):
-        return self.find(chapter_2)
+        with allure.step('Find second chapter'):
+            return self.find(chapter_2)
 
     @property
     def __chapter_3(self):
-        return self.find(chapter_3)
+        with allure.step('Find third chapter'):
+            return self.find(chapter_3)
 
     def write_messages_to_chapters(self):
-        self.__chapter_1.send_keys(self.value1)
-        self.__chapter_2.send_keys(self.value2)
-        self.__chapter_3.send_keys(self.value3)
+        with allure.step('Fill all chapters'):
+            self.__chapter_1.send_keys(self.value1)
+            self.__chapter_2.send_keys(self.value2)
+            self.__chapter_3.send_keys(self.value3)
 
     @property
     def __button(self):
-        return self.find(submit_button)
+        with allure.step('Find button'):
+            return self.find(submit_button)
 
     @property
     def __req(self):
-        return self.find(req_args)
+        with allure.step('Find requirements link'):
+            return self.find(req_args)
 
     def scroll_to(self):
-        actions = ActionChains(self.browser)
-        actions.move_to_element(self.__req).perform()
+        with allure.step('Scroll to "requirements"'):
+            actions = ActionChains(self.browser)
+            actions.move_to_element(self.__req).perform()
 
     def click_button(self):
-        self.__button.click()
+        with allure.step('Click the button'):
+            self.__button.click()
 
     @property
     def result_text(self):
-        return self.find(result_text).text
+        with allure.step('Copy result text'):
+            return self.find(result_text).text

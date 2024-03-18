@@ -1,3 +1,5 @@
+import allure
+
 from pages.uitesting.qa_practice.selenium.base_page import BasePage
 from selenium.webdriver.common.by import By
 
@@ -13,32 +15,40 @@ class MultCheckboxes(BasePage):
         super().__init__(browser)
 
     def open(self):
-        self.browser.get('https://www.qa-practice.com/elements/checkbox/mult_checkbox')
+        with allure.step('Open the web page'):
+            self.browser.get('https://www.qa-practice.com/elements/checkbox/mult_checkbox')
 
     @property
     def __chechbox1(self):
-        return self.find(checkbox1_args)
+        with allure.step('Find first checkbox'):
+            return self.find(checkbox1_args)
 
     @property
     def __chechbox2(self):
-        return self.find(checkbox2_args)
+        with allure.step('Find second checkbox'):
+            return self.find(checkbox2_args)
 
     @property
     def __chechbox3(self):
-        return self.find(checkbox3_args)
+        with allure.step('Find third checkbox'):
+            return self.find(checkbox3_args)
 
     def click_all_checkboxes(self):
-        self.__chechbox1.click()
-        self.__chechbox2.click()
-        self.__chechbox3.click()
+        with allure.step('Click checkboxes'):
+            self.__chechbox1.click()
+            self.__chechbox2.click()
+            self.__chechbox3.click()
 
     @property
     def __button(self):
-        return self.find(submit_button_args)
+        with allure.step('Find button'):
+            return self.find(submit_button_args)
 
     def click_button(self):
-        self.__button.click()
+        with allure.step('Click button'):
+            self.__button.click()
 
     @property
     def result_text(self):
-        return self.find(result_text_args).text
+        with allure.step('Copy result text'):
+            return self.find(result_text_args).text

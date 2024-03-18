@@ -1,3 +1,4 @@
+import allure
 import pytest
 
 from selenium.webdriver.common.by import By
@@ -29,6 +30,7 @@ from configtest import browser
 @pytest.mark.qapractice
 @pytest.mark.selenium
 def test_simple_text_input_page(browser):
+
     simple_text_input_page = SimpleTextInputPage(browser, text="qwerty-2")
 
     simple_text_input_page.open()
@@ -88,7 +90,9 @@ def test_simple_button(browser):
     simple_button.open()
 
     button = simple_button.button
-    button.click()
+
+    with allure.step('Click "Submit" button'):
+        button.click()
 
     assert result == simple_button.result_text
 
@@ -113,7 +117,9 @@ def test_like_a_button(browser):
     simple_button.open()
 
     button = simple_button.button
-    button.click()
+
+    with allure.step('Click "Submit" button'):
+        button.click()
 
     assert result == simple_button.result_text
 
@@ -130,7 +136,9 @@ def test_disabled_button_page(browser):
     disabled_button.change_drop_down_list_to_enable()
 
     button = disabled_button.button
-    button.click()
+
+    with allure.step('Click the button'):
+        button.click()
 
     result_text = disabled_button.result_text
 
