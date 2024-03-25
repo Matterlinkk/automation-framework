@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.support.select import Select
 
 from pages.uitesting.qa_practice.selenium.base_page import BasePage
@@ -14,23 +15,29 @@ class SingleSelectPage(BasePage):
         self.marker = marker
 
     def open(self):
-        self.browser.get('https://www.qa-practice.com/elements/select/single_select')
+        with allure.step('Open the web page'):
+            self.browser.get('https://www.qa-practice.com/elements/select/single_select')
 
     @property
     def __drop_down_list(self):
-        return self.find(drop_down_list_args)
+        with allure.step('Find dropdown list'):
+            return self.find(drop_down_list_args)
 
     def change_drop_down_list_to_marker_value(self):
-        state = Select(self.__drop_down_list)
-        state.select_by_visible_text(self.marker)
+        with allure.step('Change dropdown state to {}'.format(self.marker)):
+            state = Select(self.__drop_down_list)
+            state.select_by_visible_text(self.marker)
 
     @property
     def __button(self):
-        return self.find(submit_button_args)
+        with allure.step('Find button'):
+            return self.find(submit_button_args)
 
     def click_button(self):
-        self.__button.click()
+        with allure.step('Click button'):
+            self.__button.click()
 
     @property
     def result_text(self):
-        return self.find(result_text).text
+        with allure.step('Copy result text'):
+            return self.find(result_text).text

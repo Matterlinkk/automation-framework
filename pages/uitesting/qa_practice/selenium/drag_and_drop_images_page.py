@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver import ActionChains
 
@@ -13,20 +14,25 @@ class DragAndDropImagePage(BasePage):
         super().__init__(browser)
 
     def open(self):
-        self.browser.get('https://www.qa-practice.com/elements/dragndrop/images')
+        with allure.step('Open the web page'):
+            self.browser.get('https://www.qa-practice.com/elements/dragndrop/images')
 
     @property
     def __drag_object(self):
-        return self.find(drag_me_args)
+        with allure.step('Find dragable object'):
+            return self.find(drag_me_args)
 
     @property
     def __coords(self):
-        return self.find(drop_here_args)
+        with allure.step('Find coords'):
+            return self.find(drop_here_args)
 
     def drag_and_drop(self):
-        action = ActionChains(self.browser)
-        action.drag_and_drop(self.__drag_object, self.__coords).perform()
+        with allure.step('Drag and drop the object to the coords'):
+            action = ActionChains(self.browser)
+            action.drag_and_drop(self.__drag_object, self.__coords).perform()
 
     @property
     def result_text(self):
-        return self.find(result_text_args).text
+        with allure.step('Copy result text'):
+            return self.find(result_text_args).text
