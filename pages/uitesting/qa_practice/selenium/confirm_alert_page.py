@@ -1,3 +1,5 @@
+import allure
+
 from pages.uitesting.qa_practice.selenium.base_page import BasePage
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.alert import Alert
@@ -11,23 +13,29 @@ class ConfirmAlertPage(BasePage):
         super().__init__(browser)
 
     def open(self):
-        self.browser.get('https://www.qa-practice.com/elements/alert/confirm#')
+        with allure.step('Open the web page'):
+            self.browser.get('https://www.qa-practice.com/elements/alert/confirm#')
 
     @property
     def __button(self):
-        return self.find(submit_button_args)
+        with allure.step('Find button'):
+            return self.find(submit_button_args)
 
     def click_button(self):
-        self.__button.click()
+        with allure.step('Click button'):
+            self.__button.click()
 
     def confirm_alert(self):
-        alert = Alert(self.browser)
-        alert.accept()
+        with allure.step('Accept modal window'):
+            alert = Alert(self.browser)
+            alert.accept()
 
     def dismiss_alert(self):
-        alert = Alert(self.browser)
-        alert.dismiss()
+        with allure.step('Dismiss modal window'):
+            alert = Alert(self.browser)
+            alert.dismiss()
 
     @property
     def result_text(self):
-        return self.find(result_text_args).text
+        with allure.step('Copy result text'):
+            return self.find(result_text_args).text

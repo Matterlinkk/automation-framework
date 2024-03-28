@@ -1,3 +1,4 @@
+import allure
 import pytest
 
 from selenium.webdriver.common.by import By
@@ -22,6 +23,7 @@ from pages.uitesting.qa_practice.selenium.drag_and_drop_boxes_page import DragAn
 from pages.uitesting.qa_practice.selenium.drag_and_drop_images_page import DragAndDropImagePage
 from pages.uitesting.qa_practice.selenium.iframe_popup_page import IframePopUp
 from pages.uitesting.qa_practice.selenium.pop_up_modal_page import PopUpModalPage
+from pages.uitesting.uitestingplayground.progress_bar_page import ProgressBarPage
 
 from configtest import browser
 
@@ -29,6 +31,7 @@ from configtest import browser
 @pytest.mark.qapractice
 @pytest.mark.selenium
 def test_simple_text_input_page(browser):
+
     simple_text_input_page = SimpleTextInputPage(browser, text="qwerty-2")
 
     simple_text_input_page.open()
@@ -88,7 +91,9 @@ def test_simple_button(browser):
     simple_button.open()
 
     button = simple_button.button
-    button.click()
+
+    with allure.step('Click "Submit" button'):
+        button.click()
 
     assert result == simple_button.result_text
 
@@ -113,7 +118,9 @@ def test_like_a_button(browser):
     simple_button.open()
 
     button = simple_button.button
-    button.click()
+
+    with allure.step('Click "Submit" button'):
+        button.click()
 
     assert result == simple_button.result_text
 
@@ -130,7 +137,9 @@ def test_disabled_button_page(browser):
     disabled_button.change_drop_down_list_to_enable()
 
     button = disabled_button.button
-    button.click()
+
+    with allure.step('Click the button'):
+        button.click()
 
     result_text = disabled_button.result_text
 
@@ -387,3 +396,22 @@ def test_pop_up_modal_page(browser):
     result_text = pop_up_modal_page.result_text
 
     assert result == result_text
+
+
+@pytest.mark.uitestingplayground
+@pytest.mark.selenium
+def test_progress_bar(browser):
+    progressBar = ProgressBarPage(browser)
+
+    progressBar.open()
+
+    progressBar.click_start()
+
+    progressBar.wait_for_progress_bar_75()
+
+    progressBar.click_stop()
+
+    result_text = progressBar.result_text
+
+    assert result_text <= 2
+

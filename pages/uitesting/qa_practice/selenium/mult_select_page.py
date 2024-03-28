@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.support.select import Select
 
 from pages.uitesting.qa_practice.selenium.base_page import BasePage
@@ -18,37 +19,45 @@ class MultSelectPage(BasePage):
         self.marker_3 = marker_3
 
     def open(self):
-        self.browser.get('https://www.qa-practice.com/elements/select/mult_select')
+        with allure.step('Open the web page'):
+            self.browser.get('https://www.qa-practice.com/elements/select/mult_select')
 
     @property
     def __drop_down_list_1(self):
-        return self.find(drop_down_list_args_1)
+        with allure.step('Find first dropdown'):
+            return self.find(drop_down_list_args_1)
 
     @property
     def __drop_down_list_2(self):
-        return self.find(drop_down_list_args_2)
+        with allure.step('Find second dropdown'):
+            return self.find(drop_down_list_args_2)
 
     @property
     def __drop_down_list_3(self):
-        return self.find(drop_down_list_args_3)
+        with allure.step('Find third dropdown'):
+            return self.find(drop_down_list_args_3)
 
     def change_drop_down_list_to_marker_values(self):
-        state = Select(self.__drop_down_list_1)
-        state.select_by_visible_text(self.marker_1)
+        with allure.step('Change dropdowns states with value'):
+            state = Select(self.__drop_down_list_1)
+            state.select_by_visible_text(self.marker_1)
 
-        state = Select(self.__drop_down_list_2)
-        state.select_by_visible_text(self.marker_2)
+            state = Select(self.__drop_down_list_2)
+            state.select_by_visible_text(self.marker_2)
 
-        state = Select(self.__drop_down_list_3)
-        state.select_by_visible_text(self.marker_3)
+            state = Select(self.__drop_down_list_3)
+            state.select_by_visible_text(self.marker_3)
 
     @property
     def __button(self):
-        return self.find(submit_button_args)
+        with allure.step('Find button'):
+            return self.find(submit_button_args)
 
     def click_button(self):
-        self.__button.click()
+        with allure.step('Find click'):
+            self.__button.click()
 
     @property
     def result_text(self):
-        return self.find(result_text).text
+        with allure.step('Copy result text'):
+            return self.find(result_text).text
