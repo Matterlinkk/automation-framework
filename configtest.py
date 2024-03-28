@@ -1,7 +1,15 @@
 import pytest
 import requests
+
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+from appium import webdriver
+from appium.options.android import UiAutomator2Options
+from appium.options.common.base import AppiumOptions
+from appium.webdriver.common.appiumby import AppiumBy
 
 
 # selenuim
@@ -166,3 +174,48 @@ def created_book():
     }
 
     requests.post('https://restful-booker.herokuapp.com/booking', json=data)
+
+
+@pytest.fixture()
+def driver_init():
+    driver = startDriver()
+
+    yield driver
+
+    closeDriver(driver)
+
+#appium
+def startDriver():
+    options = AppiumOptions()
+    appium_server_url = 'http://127.0.0.1:4723'
+    desired_capabilities = {
+        "platformName": "Android",
+        "deviceName": "Pixel 7a API 30",
+        "noReset": True,
+    }
+
+    driver = webdriver.Remote(appium_server_url, options=UiAutomator2Options().load_capabilities(desired_capabilities))
+    return driver
+
+
+def closeDriver(driver):
+    if driver:
+
+        tabs = driver.find_element(AppiumBy.ID, 'com.android.chrome:id/tab_switcher_button')
+        tabs.click()
+
+        option = driver.find_element(AppiumBy.XPATH, '//android.widget.ImageButton[@content-desc="More options"]')
+        option.click()
+
+        close_tabs = driver.find_element(AppiumBy.XPATH, '//android.widget.TextView[@content-desc="Close all tabs"]')
+        close_tabs.click()
+
+        new_tab = driver.find_element(AppiumBy.XPATH, '//android.widget.ImageButton[@content-desc="New tab"]')
+        new_tab.click()
+
+        wait_for_url_bar = WebDriverWait(driver, 20).until(
+            EC.visibility_of_element_located((AppiumBy.XPATH, '//android.widget.EditText[@resource-id="com.android.chrome:id/search_box_text"]')))
+
+        driver.tap([(539, 2336)])
+
+        driver.quit()
