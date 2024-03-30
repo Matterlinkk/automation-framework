@@ -1,9 +1,6 @@
 import allure
 import pytest
 
-from configtest import (create_and_delete_user, create_user, create_pet_with_status_sold, create_and_delete,
-                        created_book)
-
 from pages.api_testing.user.get_user import GetUser
 from pages.api_testing.petstore.get_by_status import FindByStatus
 from pages.api_testing.petstore.create_pet import CreatePet
@@ -34,7 +31,7 @@ def test_find_by_status_available():
 
 @pytest.mark.api_testing
 @pytest.mark.petstore
-def test_find_by_status_pending():
+def test_find_by_status_pending(create_and_delete_with_status_pending):
     find_by_status = FindByStatus()
 
     with allure.step('Get all pets with ID pending'):
@@ -46,7 +43,7 @@ def test_find_by_status_pending():
 
 @pytest.mark.api_testing
 @pytest.mark.petstore
-def test_find_by_status_sold():
+def test_find_by_status_sold(create_and_delete):
     find_by_status = FindByStatus()
 
     with allure.step('Get all pets with ID sold'):

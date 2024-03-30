@@ -6,8 +6,6 @@ from appium.webdriver.common.appiumby import AppiumBy
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-from configtest import driver_init
-
 
 def search_to(driver, url):
     with allure.step('Open the browser'):

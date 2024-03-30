@@ -25,8 +25,6 @@ from pages.uitesting.qa_practice.selenium.iframe_popup_page import IframePopUp
 from pages.uitesting.qa_practice.selenium.pop_up_modal_page import PopUpModalPage
 from pages.uitesting.uitestingplayground.progress_bar_page import ProgressBarPage
 
-from configtest import browser
-
 
 @pytest.mark.qapractice
 @pytest.mark.selenium

@@ -176,6 +176,7 @@ def created_book():
     requests.post('https://restful-booker.herokuapp.com/booking', json=data)
 
 
+# appium
 @pytest.fixture()
 def driver_init():
     driver = startDriver()
@@ -184,7 +185,7 @@ def driver_init():
 
     closeDriver(driver)
 
-#appium
+
 def startDriver():
     options = AppiumOptions()
     appium_server_url = 'http://127.0.0.1:4723'
@@ -200,7 +201,6 @@ def startDriver():
 
 def closeDriver(driver):
     if driver:
-
         tabs = driver.find_element(AppiumBy.ID, 'com.android.chrome:id/tab_switcher_button')
         tabs.click()
 
@@ -214,7 +214,8 @@ def closeDriver(driver):
         new_tab.click()
 
         wait_for_url_bar = WebDriverWait(driver, 20).until(
-            EC.visibility_of_element_located((AppiumBy.XPATH, '//android.widget.EditText[@resource-id="com.android.chrome:id/search_box_text"]')))
+            EC.visibility_of_element_located(
+                (AppiumBy.XPATH, '//android.widget.EditText[@resource-id="com.android.chrome:id/search_box_text"]')))
 
         driver.tap([(539, 2336)])
 
