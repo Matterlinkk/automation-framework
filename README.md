@@ -1,5 +1,5 @@
 # Automation framework
-This is a simple Python code that shows practice testing skills using Selenium, Playwright, API.
+This is a simple Python code that shows practice testing skills using Selenium, Playwright, API, Appium.
 ## Install
 1. Install Python 3.10 or higher [official website](https://www.python.org/downloads/)
 2. Install OpenJDK 17 [official website](https://learn.microsoft.com/ru-ru/java/openjdk/download)
