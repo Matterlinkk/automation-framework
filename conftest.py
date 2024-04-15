@@ -16,6 +16,8 @@ from appium.webdriver.common.appiumby import AppiumBy
 @pytest.fixture(scope='function')
 def start_selenium_driver():
     options = Options()
+    options.add_argument("--headless")
+    options.add_argument("--javascript")
     options.add_argument("--window-size=1920,1080")
     browser = webdriver_selenium.Chrome(options=options)
 
