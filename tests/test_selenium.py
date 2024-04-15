@@ -28,9 +28,9 @@ from pages.uitesting.uitestingplayground.progress_bar_page import ProgressBarPag
 
 @pytest.mark.qapractice
 @pytest.mark.selenium
-def test_simple_text_input_page(browser):
+def test_simple_text_input_page(start_selenium_driver):
 
-    simple_text_input_page = SimpleTextInputPage(browser, text="qwerty-2")
+    simple_text_input_page = SimpleTextInputPage(start_selenium_driver, text="qwerty-2")
 
     simple_text_input_page.open()
 
@@ -43,8 +43,8 @@ def test_simple_text_input_page(browser):
 
 @pytest.mark.qapractice
 @pytest.mark.selenium
-def test_email_input_page(browser):
-    simple_text_input_page = EmailInputPage(browser, email="qyaywq@gmail.com")
+def test_email_input_page(start_selenium_driver):
+    simple_text_input_page = EmailInputPage(start_selenium_driver, email="qyaywq@gmail.com")
 
     simple_text_input_page.open()
 
@@ -57,8 +57,8 @@ def test_email_input_page(browser):
 
 @pytest.mark.qapractice
 @pytest.mark.selenium
-def test_password_input_page(browser):
-    password_input_page = PasswordInputPage(browser, password="Qwerty-2")
+def test_password_input_page(start_selenium_driver):
+    password_input_page = PasswordInputPage(start_selenium_driver, password="Qwerty-2")
 
     password_input_page.open()
 
@@ -71,8 +71,8 @@ def test_password_input_page(browser):
 
 @pytest.mark.qapractice
 @pytest.mark.selenium
-def test_simple_button_is_displayed(browser):
-    simple_button = SimpleButtonPage(browser)
+def test_simple_button_is_displayed(start_selenium_driver):
+    simple_button = SimpleButtonPage(start_selenium_driver)
 
     simple_button.open()
 
@@ -81,10 +81,10 @@ def test_simple_button_is_displayed(browser):
 
 @pytest.mark.qapractice
 @pytest.mark.selenium
-def test_simple_button(browser):
+def test_simple_button(start_selenium_driver):
     result = "Submitted"
 
-    simple_button = SimpleButtonPage(browser)
+    simple_button = SimpleButtonPage(start_selenium_driver)
 
     simple_button.open()
 
@@ -98,8 +98,8 @@ def test_simple_button(browser):
 
 @pytest.mark.qapractice
 @pytest.mark.selenium
-def test_like_a_button_is_displayed(browser):
-    simple_button = LooksLikeAButtonPage(browser)
+def test_like_a_button_is_displayed(start_selenium_driver):
+    simple_button = LooksLikeAButtonPage(start_selenium_driver)
 
     simple_button.open()
 
@@ -108,10 +108,10 @@ def test_like_a_button_is_displayed(browser):
 
 @pytest.mark.qapractice
 @pytest.mark.selenium
-def test_like_a_button(browser):
+def test_like_a_button(start_selenium_driver):
     result = "Submitted"
 
-    simple_button = LooksLikeAButtonPage(browser)
+    simple_button = LooksLikeAButtonPage(start_selenium_driver)
 
     simple_button.open()
 
@@ -125,10 +125,10 @@ def test_like_a_button(browser):
 
 @pytest.mark.qapractice
 @pytest.mark.selenium
-def test_disabled_button_page(browser):
+def test_disabled_button_page(start_selenium_driver):
     result = "Submitted"
 
-    disabled_button = DisplayedButtonPage(browser)
+    disabled_button = DisplayedButtonPage(start_selenium_driver)
 
     disabled_button.open()
 
@@ -146,10 +146,10 @@ def test_disabled_button_page(browser):
 
 @pytest.mark.qapractice
 @pytest.mark.selenium
-def test_single_checkbox(browser):
+def test_single_checkbox(start_selenium_driver):
     result = 'select me or not'
 
-    single_chechbox = SingleCheckboxPage(browser)
+    single_chechbox = SingleCheckboxPage(start_selenium_driver)
 
     single_chechbox.open()
 
@@ -164,10 +164,10 @@ def test_single_checkbox(browser):
 
 @pytest.mark.qapractice
 @pytest.mark.selenium
-def test_mult_checkboxes(browser):
+def test_mult_checkboxes(start_selenium_driver):
     result = 'one, two, three'
 
-    mult_checkboxes = MultCheckboxes(browser)
+    mult_checkboxes = MultCheckboxes(start_selenium_driver)
 
     mult_checkboxes.open()
 
@@ -191,8 +191,8 @@ def test_mult_checkboxes(browser):
 )
 @pytest.mark.qapractice
 @pytest.mark.selenium
-def test_single_select(browser, marker):
-    single_input = SingleSelectPage(browser, marker)
+def test_single_select(start_selenium_driver, marker):
+    single_input = SingleSelectPage(start_selenium_driver, marker)
 
     single_input.open()
 
@@ -226,9 +226,9 @@ def generate_pairs():
 )
 @pytest.mark.qapractice
 @pytest.mark.selenium
-def test_mult_select(browser, pairs):
+def test_mult_select(start_selenium_driver, pairs):
     marker_1, marker_2, marker_3 = pairs
-    mult_select = MultSelectPage(browser, marker_1, marker_2, marker_3)
+    mult_select = MultSelectPage(start_selenium_driver, marker_1, marker_2, marker_3)
 
     mult_select.open()
 
@@ -243,10 +243,10 @@ def test_mult_select(browser, pairs):
 
 @pytest.mark.qapractice
 @pytest.mark.selenium
-def test_new_tab_link_page(browser):
+def test_new_tab_link_page(start_selenium_driver):
     result = 'I am a new page in a new tab'
 
-    new_tab_link_page = NewTabLinkPage(browser)
+    new_tab_link_page = NewTabLinkPage(start_selenium_driver)
 
     new_tab_link_page.open()
 
@@ -261,8 +261,8 @@ def test_new_tab_link_page(browser):
 
 @pytest.mark.qapractice
 @pytest.mark.selenium
-def test_text_areas(browser):
-    text_areas_page = TextAreasPage(browser, ["Q", "W", "E"])
+def test_text_areas(start_selenium_driver):
+    text_areas_page = TextAreasPage(start_selenium_driver, ["Q", "W", "E"])
 
     text_areas_page.open()
 
@@ -282,8 +282,8 @@ def test_text_areas(browser):
 
 @pytest.mark.qapractice
 @pytest.mark.selenium
-def test_confirm_alert(browser):
-    confirm_alert_page = ConfirmAlertPage(browser)
+def test_confirm_alert(start_selenium_driver):
+    confirm_alert_page = ConfirmAlertPage(start_selenium_driver)
 
     confirm_alert_page.open()
 
@@ -298,8 +298,8 @@ def test_confirm_alert(browser):
 
 @pytest.mark.qapractice
 @pytest.mark.selenium
-def test_dismiss_alert(browser):
-    confirm_alert_page = ConfirmAlertPage(browser)
+def test_dismiss_alert(start_selenium_driver):
+    confirm_alert_page = ConfirmAlertPage(start_selenium_driver)
 
     confirm_alert_page.open()
 
@@ -314,10 +314,10 @@ def test_dismiss_alert(browser):
 
 @pytest.mark.qapractice
 @pytest.mark.selenium
-def test_drag_and_drop_boxes(browser):
+def test_drag_and_drop_boxes(start_selenium_driver):
     result = 'Dropped!'
 
-    drag_and_drop_boxes_page = DragAndDropBoxesPage(browser)
+    drag_and_drop_boxes_page = DragAndDropBoxesPage(start_selenium_driver)
 
     drag_and_drop_boxes_page.open()
 
@@ -330,10 +330,10 @@ def test_drag_and_drop_boxes(browser):
 
 @pytest.mark.qapractice
 @pytest.mark.selenium
-def test_drag_and_drop_image(browser):
+def test_drag_and_drop_image(start_selenium_driver):
     result = 'Dropped!'
 
-    drag_and_drop_boxes_page = DragAndDropImagePage(browser)
+    drag_and_drop_boxes_page = DragAndDropImagePage(start_selenium_driver)
 
     drag_and_drop_boxes_page.open()
 
@@ -346,10 +346,9 @@ def test_drag_and_drop_image(browser):
 
 @pytest.mark.qapractice
 @pytest.mark.selenium
-def test_iframe_pop_up(browser):
+def test_iframe_pop_up(start_selenium_driver):
     result = 'Correct!'
-
-    iframe_pop_up_page = IframePopUp(browser)
+    iframe_pop_up_page = IframePopUp(start_selenium_driver)
 
     iframe_pop_up_page.open()
 
@@ -357,7 +356,7 @@ def test_iframe_pop_up(browser):
 
     iframe_pop_up_page.switch_to_pop_up_frame()
 
-    iframe_text_element = WebDriverWait(iframe_pop_up_page.browser, 10).until(
+    iframe_text_element = WebDriverWait(iframe_pop_up_page.get_browser, 10).until(
         EC.visibility_of_element_located((By.CSS_SELECTOR, 'p[id="text-to-copy"]'))
     )
 
@@ -378,10 +377,10 @@ def test_iframe_pop_up(browser):
 
 @pytest.mark.qapractice
 @pytest.mark.selenium
-def test_pop_up_modal_page(browser):
+def test_pop_up_modal_page(start_selenium_driver):
     result = 'select me or not'
 
-    pop_up_modal_page = PopUpModalPage(browser)
+    pop_up_modal_page = PopUpModalPage(start_selenium_driver)
 
     pop_up_modal_page.open()
 
@@ -398,8 +397,8 @@ def test_pop_up_modal_page(browser):
 
 @pytest.mark.uitestingplayground
 @pytest.mark.selenium
-def test_progress_bar(browser):
-    progressBar = ProgressBarPage(browser)
+def test_progress_bar(start_selenium_driver):
+    progressBar = ProgressBarPage(start_selenium_driver)
 
     progressBar.open()
 

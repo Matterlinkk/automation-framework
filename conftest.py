@@ -1,12 +1,12 @@
 import pytest
 import requests
 
-from selenium import webdriver
+from selenium import webdriver as webdriver_selenium
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-from appium import webdriver
+from appium import webdriver as webdriver_appium
 from appium.options.android import UiAutomator2Options
 from appium.options.common.base import AppiumOptions
 from appium.webdriver.common.appiumby import AppiumBy
@@ -14,12 +14,10 @@ from appium.webdriver.common.appiumby import AppiumBy
 
 # selenuim
 @pytest.fixture(scope='function')
-def browser():
+def start_selenium_driver():
     options = Options()
-    options.add_argument("--headless")
-    options.add_argument("--javascript")
     options.add_argument("--window-size=1920,1080")
-    browser = webdriver.Chrome(options=options)
+    browser = webdriver_selenium.Chrome(options=options)
 
     browser.implicitly_wait(10)
 
@@ -195,7 +193,8 @@ def startDriver():
         "noReset": True,
     }
 
-    driver = webdriver.Remote(appium_server_url, options=UiAutomator2Options().load_capabilities(desired_capabilities))
+    driver = webdriver_appium.Remote(appium_server_url,
+                                     options=UiAutomator2Options().load_capabilities(desired_capabilities))
     return driver
 
 

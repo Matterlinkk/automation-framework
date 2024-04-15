@@ -16,6 +16,10 @@ class IframePopUp(BasePage):
     def __init__(self, browser):
         super().__init__(browser)
 
+    @property
+    def get_browser(self):
+        return self.browser
+
     def open(self):
         with allure.step('Open the web page'):
             self.browser.get('https://www.qa-practice.com/elements/popup/iframe_popup')
