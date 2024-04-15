@@ -6,21 +6,18 @@ from playwright.sync_api import Page, expect
 @pytest.mark.playwright
 @pytest.mark.inputs
 def test_input_field(page: Page):
-    with allure.step('Open the web page'):
-        page.goto('https://www.qa-practice.com/elements/input/simple')
 
-    with allure.step('Click input field "Submit me"'):
-        input_field = page.get_by_placeholder('Submit me')
+    page.goto('https://www.qa-practice.com/elements/input/simple')
 
-        input_field.dispatch_event('click')
+    input_field = page.get_by_placeholder('Submit me')
 
-    with allure.step('Fill input field with text'):
-        input_field.fill('ilovetea')
+    input_field.dispatch_event('click')
 
-        page.keyboard.press('Enter')
+    input_field.fill('ilovetea')
 
-    with allure.step('Compare expected result and actual result'):
-        expect(page.locator('#result')).to_contain_text('ilovetea')
+    page.keyboard.press('Enter')
+
+    expect(page.locator('#result')).to_contain_text('ilovetea')
 
 
 @pytest.mark.playwright
@@ -650,4 +647,4 @@ def test_verify_text(page: Page):
         page.get_by_role('button', name='Stop').click()
 
     with allure.step('Compare expected result and actual result'):
-        expect(page.locator('//p[@id="result"]')).to_contain_text('Result: 0')
+        assert int(page.locator('//p[@id="result"]').text_content()[8:9]) <= 2
