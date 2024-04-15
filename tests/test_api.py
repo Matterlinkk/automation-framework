@@ -17,8 +17,7 @@ from pages.api_testing.placeholder.delete_post import DeletePost
 from pages.api_testing.placeholder.put_post import Update
 
 
-@pytest.mark.api_testing
-@pytest.mark.petstore
+@pytest.mark.api
 def test_find_by_status_available():
     find_by_status = FindByStatus()
 
@@ -29,8 +28,7 @@ def test_find_by_status_available():
         assert find_by_status.is_status(status='available') and find_by_status.is_status_code_200()
 
 
-@pytest.mark.api_testing
-@pytest.mark.petstore
+@pytest.mark.api
 def test_find_by_status_pending(create_and_delete_with_status_pending):
     find_by_status = FindByStatus()
 
@@ -41,8 +39,7 @@ def test_find_by_status_pending(create_and_delete_with_status_pending):
         assert find_by_status.is_status(status='pending') and find_by_status.is_status_code_200()
 
 
-@pytest.mark.api_testing
-@pytest.mark.petstore
+@pytest.mark.api
 def test_find_by_status_sold(create_and_delete):
     find_by_status = FindByStatus()
 
@@ -53,8 +50,7 @@ def test_find_by_status_sold(create_and_delete):
         assert find_by_status.is_status(status='sold') and find_by_status.is_status_code_200()
 
 
-@pytest.mark.api_testing
-@pytest.mark.petstore
+@pytest.mark.api
 def test_create_pet():
     create_pet = CreatePet()
 
@@ -65,8 +61,7 @@ def test_create_pet():
         assert create_pet.is_status_code_200() and create_pet.check_pet_name()
 
 
-@pytest.mark.api_testing
-@pytest.mark.petstore
+@pytest.mark.api
 def test_delete_pet(create_pet_with_status_sold):
     delete_pet = DeletePet()
 
@@ -77,8 +72,7 @@ def test_delete_pet(create_pet_with_status_sold):
         assert delete_pet.is_status_code_200() and delete_pet.is_id_correct()
 
 
-@pytest.mark.api_testing
-@pytest.mark.petstore
+@pytest.mark.api
 def test_find_by_id(create_and_delete):
     find_by_id = FindById()
 
@@ -89,8 +83,7 @@ def test_find_by_id(create_and_delete):
         assert find_by_id.is_status_code_200() and find_by_id.check_pet_name()
 
 
-@pytest.mark.api_testing
-@pytest.mark.user
+@pytest.mark.api
 def test_create_user():
     create_user = CreateUser()
 
@@ -101,8 +94,7 @@ def test_create_user():
         assert create_user.is_status_code_200() and create_user.check_response_status()
 
 
-@pytest.mark.api_testing
-@pytest.mark.user
+@pytest.mark.api
 def test_delete_user(create_user):
     delete_user = DeleteUser()
 
@@ -113,8 +105,7 @@ def test_delete_user(create_user):
         assert delete_user.is_status_code_200() and delete_user.check_nickname()
 
 
-@pytest.mark.api_testing
-@pytest.mark.user
+@pytest.mark.api
 def test_get_user(create_and_delete_user):
     get_user = GetUser()
 
@@ -125,8 +116,7 @@ def test_get_user(create_and_delete_user):
         assert get_user.is_status_code_200() and get_user.check_nickname()
 
 
-@pytest.mark.api_testing
-@pytest.mark.user
+@pytest.mark.api
 def test_update_user(create_and_delete_user):
     update_user = UpdateUser()
 
@@ -140,8 +130,7 @@ def test_update_user(create_and_delete_user):
         assert update_user.is_status_code_200() and update_user.check_nickname()
 
 
-@pytest.mark.api_testing
-@pytest.mark.user
+@pytest.mark.api
 def test_auth(create_and_delete_user):
     auth = Auth()
 
@@ -152,8 +141,7 @@ def test_auth(create_and_delete_user):
         assert auth.is_status_code_200() and auth.check_response_status()
 
 
-@pytest.mark.api_testing
-@pytest.mark.booker
+@pytest.mark.api
 def test_get_books_id(created_book):
     create_book = CreateBook()
 
@@ -167,8 +155,7 @@ def test_get_books_id(created_book):
         assert create_book.is_status_code_200() and create_book.check_initials()
 
 
-@pytest.mark.api_testing
-@pytest.mark.booker
+@pytest.mark.api
 def test_filter_by_dates(created_book):
     create_book = CreateBook()
 
@@ -182,8 +169,7 @@ def test_filter_by_dates(created_book):
         assert create_book.is_status_code_200() and create_book.check_dates()
 
 
-@pytest.mark.api_testing
-@pytest.mark.placeholder
+@pytest.mark.api
 def test_comments_from_first_post():
     get_comments = GetComments()
 
@@ -194,8 +180,7 @@ def test_comments_from_first_post():
         assert get_comments.is_status_code_200() and get_comments.check_comments()
 
 
-@pytest.mark.api_testing
-@pytest.mark.placeholder
+@pytest.mark.api
 def test_delete_post():
     delete_post = DeletePost()
 
@@ -209,8 +194,7 @@ def test_delete_post():
         assert delete_post.compare_posts()
 
 
-@pytest.mark.api_testing
-@pytest.mark.placeholder
+@pytest.mark.api
 def test_put_post():
     put_post = Update()
 
@@ -221,8 +205,7 @@ def test_put_post():
         assert put_post.is_status_code_200() and put_post.compate_titles()
 
 
-@pytest.mark.api_testing
-@pytest.mark.placeholder
+@pytest.mark.api
 def test_patch_post():
     put_post = Update()
 
@@ -233,8 +216,7 @@ def test_patch_post():
         assert put_post.is_status_code_200() and put_post.compare_user_id()
 
 
-@pytest.mark.api_testing
-@pytest.mark.placeholder
+@pytest.mark.api
 def test_posts():
     get_posts = GetPosts()
 

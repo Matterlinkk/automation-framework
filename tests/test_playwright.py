@@ -4,7 +4,6 @@ from playwright.sync_api import Page, expect
 
 
 @pytest.mark.playwright
-@pytest.mark.inputs
 def test_input_field(page: Page):
 
     page.goto('https://www.qa-practice.com/elements/input/simple')
@@ -21,7 +20,6 @@ def test_input_field(page: Page):
 
 
 @pytest.mark.playwright
-@pytest.mark.inputs
 def test_email_field_negative(page: Page):
     with allure.step('Go to the web page'):
         page.goto("https://www.qa-practice.com/elements/input/email")
@@ -39,7 +37,6 @@ def test_email_field_negative(page: Page):
 
 
 @pytest.mark.playwright
-@pytest.mark.inputs
 def test_email_field_positive(page: Page):
     with allure.step('Go to the web page'):
         page.goto("https://www.qa-practice.com/elements/input/email")
@@ -57,7 +54,6 @@ def test_email_field_positive(page: Page):
 
 
 @pytest.mark.playwright
-@pytest.mark.inputs
 def test_password_field_negative(page: Page):
     with allure.step('Go to the web page'):
         page.goto("https://www.qa-practice.com/elements/input/passwd")
@@ -75,7 +71,6 @@ def test_password_field_negative(page: Page):
 
 
 @pytest.mark.playwright
-@pytest.mark.inputs
 def test_password_field_positive(page: Page):
     with allure.step('Go to the web page'):
         page.goto("https://www.qa-practice.com/elements/input/passwd")
@@ -93,7 +88,6 @@ def test_password_field_positive(page: Page):
 
 
 @pytest.mark.playwright
-@pytest.mark.buttons
 def test_simple_button(page: Page):
     with allure.step('Go to the web page'):
         page.goto('https://www.qa-practice.com/elements/button/simple')
@@ -106,7 +100,6 @@ def test_simple_button(page: Page):
 
 
 @pytest.mark.playwright
-@pytest.mark.buttons
 def test_looks_like_a_button(page: Page):
     with allure.step('Go to the web page'):
         page.goto('https://www.qa-practice.com/elements/button/like_a_button')
@@ -119,7 +112,6 @@ def test_looks_like_a_button(page: Page):
 
 
 @pytest.mark.playwright
-@pytest.mark.buttons
 def test_disabled_button(page: Page):
     with allure.step('Go to the web page'):
         page.goto('https://www.qa-practice.com/elements/button/disabled')
@@ -136,7 +128,6 @@ def test_disabled_button(page: Page):
 
 
 @pytest.mark.playwright
-@pytest.mark.checkboxes
 def test_single_checkbox(page: Page):
     with allure.step('Go to the web page'):
         page.goto('https://www.qa-practice.com/elements/checkbox/single_checkbox')
@@ -152,7 +143,6 @@ def test_single_checkbox(page: Page):
 
 
 @pytest.mark.playwright
-@pytest.mark.checkboxes
 def test_checkboxes(page: Page):
     with allure.step('Go to the web page'):
         page.goto('https://www.qa-practice.com/elements/checkbox/mult_checkbox')
@@ -183,7 +173,6 @@ def test_checkboxes(page: Page):
     ]
 )
 @pytest.mark.playwright
-@pytest.mark.selects
 def test_single_select(page: Page, marker):
     with allure.step('Go to the web page'):
         page.goto('https://www.qa-practice.com/elements/select/single_select')
@@ -222,7 +211,6 @@ def generate_pairs():
     generate_pairs()[:5]
 )
 @pytest.mark.playwright
-@pytest.mark.selects
 def test_mult_select(page: Page, pairs):
     marker_1, marker_2, marker_3 = pairs
 
@@ -249,7 +237,6 @@ def test_mult_select(page: Page, pairs):
 
 
 @pytest.mark.playwright
-@pytest.mark.newtabs
 def test_new_tab_link(page: Page):
     with allure.step('Go to the web page'):
         page.goto("https://www.qa-practice.com/elements/new_tab/link")
@@ -265,7 +252,6 @@ def test_new_tab_link(page: Page):
 
 
 @pytest.mark.playwright
-@pytest.mark.newtabs
 def test_new_tab_link_button(page: Page):
     with allure.step('Go to the web page'):
         page.goto("https://www.qa-practice.com/elements/new_tab/button")
@@ -281,7 +267,6 @@ def test_new_tab_link_button(page: Page):
 
 
 @pytest.mark.playwright
-@pytest.mark.textareas
 def test_area_inputs(page: Page):
     value = 'playwright-pytest'
 
@@ -299,7 +284,6 @@ def test_area_inputs(page: Page):
 
 
 @pytest.mark.playwright
-@pytest.mark.textareas
 def test_mult_area_inputs(page: Page):
     value1, value2, value3 = 'Q', "W", 'E'
 
@@ -321,7 +305,6 @@ def test_mult_area_inputs(page: Page):
 
 
 @pytest.mark.playwright
-@pytest.mark.alerts
 def test_confirmation_box_positive(page: Page):
     with allure.step('Go to the web page'):
         page.goto('https://www.qa-practice.com/elements/alert/confirm#')
@@ -337,7 +320,6 @@ def test_confirmation_box_positive(page: Page):
 
 
 @pytest.mark.playwright
-@pytest.mark.alerts
 def test_confirmation_box_negative(page: Page):
     with allure.step('Go to the web page'):
         page.goto('https://www.qa-practice.com/elements/alert/confirm#')
@@ -353,7 +335,6 @@ def test_confirmation_box_negative(page: Page):
 
 
 @pytest.mark.playwright
-@pytest.mark.alerts
 def test_prompt_box_negative(page: Page):
     with allure.step('Go to the web page'):
         page.goto('https://www.qa-practice.com/elements/alert/prompt#')
@@ -369,7 +350,6 @@ def test_prompt_box_negative(page: Page):
 
 
 @pytest.mark.playwright
-@pytest.mark.alerts
 def test_prompt_box_positive(page: Page):
     with allure.step('Go to the web page'):
         page.goto('https://www.qa-practice.com/elements/alert/prompt#')
@@ -387,7 +367,6 @@ def test_prompt_box_positive(page: Page):
 
 
 @pytest.mark.playwright
-@pytest.mark.dragndrops
 def test_drag_n_drop_boxes(page: Page):
     with allure.step('Go to the web page'):
         page.goto('https://www.qa-practice.com/elements/dragndrop/boxes')
@@ -402,7 +381,6 @@ def test_drag_n_drop_boxes(page: Page):
 
 
 @pytest.mark.playwright
-@pytest.mark.dragndrops
 def test_drag_n_drop_images(page: Page):
     with allure.step('Go to the web page'):
         page.goto('https://www.qa-practice.com/elements/dragndrop/images')
@@ -418,7 +396,6 @@ def test_drag_n_drop_images(page: Page):
 
 
 @pytest.mark.playwright
-@pytest.mark.popups
 def test_modal_pop_up_positive(page: Page):
     with allure.step('Go to the web page'):
         page.goto('https://www.qa-practice.com/elements/popup/modal')
@@ -437,7 +414,6 @@ def test_modal_pop_up_positive(page: Page):
 
 
 @pytest.mark.playwright
-@pytest.mark.popups
 def test_modal_pop_up_negative(page: Page):
     with allure.step('Go to the web page'):
         page.goto('https://www.qa-practice.com/elements/popup/modal')
@@ -453,7 +429,6 @@ def test_modal_pop_up_negative(page: Page):
 
 
 @pytest.mark.playwright
-@pytest.mark.popups
 def test_iframe_pop_up(page: Page):
     with allure.step('Go to the web page'):
         page.goto('https://www.qa-practice.com/elements/popup/iframe_popup')
