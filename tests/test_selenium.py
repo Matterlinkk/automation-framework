@@ -26,7 +26,6 @@ from pages.uitesting.qa_practice.selenium.pop_up_modal_page import PopUpModalPag
 from pages.uitesting.uitestingplayground.progress_bar_page import ProgressBarPage
 
 
-@pytest.mark.qapractice
 @pytest.mark.selenium
 def test_simple_text_input_page(start_selenium_driver):
 
@@ -41,7 +40,6 @@ def test_simple_text_input_page(start_selenium_driver):
     assert result_text == simple_text_input_page.text
 
 
-@pytest.mark.qapractice
 @pytest.mark.selenium
 def test_email_input_page(start_selenium_driver):
     simple_text_input_page = EmailInputPage(start_selenium_driver, email="qyaywq@gmail.com")
@@ -55,7 +53,6 @@ def test_email_input_page(start_selenium_driver):
     assert result_text == simple_text_input_page.email
 
 
-@pytest.mark.qapractice
 @pytest.mark.selenium
 def test_password_input_page(start_selenium_driver):
     password_input_page = PasswordInputPage(start_selenium_driver, password="Qwerty-2")
@@ -69,7 +66,6 @@ def test_password_input_page(start_selenium_driver):
     assert result_text == password_input_page.password
 
 
-@pytest.mark.qapractice
 @pytest.mark.selenium
 def test_simple_button_is_displayed(start_selenium_driver):
     simple_button = SimpleButtonPage(start_selenium_driver)
@@ -79,7 +75,6 @@ def test_simple_button_is_displayed(start_selenium_driver):
     assert simple_button.button_is_displayed
 
 
-@pytest.mark.qapractice
 @pytest.mark.selenium
 def test_simple_button(start_selenium_driver):
     result = "Submitted"
@@ -96,7 +91,6 @@ def test_simple_button(start_selenium_driver):
     assert result == simple_button.result_text
 
 
-@pytest.mark.qapractice
 @pytest.mark.selenium
 def test_like_a_button_is_displayed(start_selenium_driver):
     simple_button = LooksLikeAButtonPage(start_selenium_driver)
@@ -106,7 +100,6 @@ def test_like_a_button_is_displayed(start_selenium_driver):
     assert simple_button.button_is_displayed
 
 
-@pytest.mark.qapractice
 @pytest.mark.selenium
 def test_like_a_button(start_selenium_driver):
     result = "Submitted"
@@ -123,7 +116,6 @@ def test_like_a_button(start_selenium_driver):
     assert result == simple_button.result_text
 
 
-@pytest.mark.qapractice
 @pytest.mark.selenium
 def test_disabled_button_page(start_selenium_driver):
     result = "Submitted"
@@ -144,7 +136,6 @@ def test_disabled_button_page(start_selenium_driver):
     assert result_text == result
 
 
-@pytest.mark.qapractice
 @pytest.mark.selenium
 def test_single_checkbox(start_selenium_driver):
     result = 'select me or not'
@@ -162,7 +153,6 @@ def test_single_checkbox(start_selenium_driver):
     assert result == result_text
 
 
-@pytest.mark.qapractice
 @pytest.mark.selenium
 def test_mult_checkboxes(start_selenium_driver):
     result = 'one, two, three'
@@ -189,7 +179,6 @@ def test_mult_checkboxes(start_selenium_driver):
         'C#',
     ]
 )
-@pytest.mark.qapractice
 @pytest.mark.selenium
 def test_single_select(start_selenium_driver, marker):
     single_input = SingleSelectPage(start_selenium_driver, marker)
@@ -224,7 +213,6 @@ def generate_pairs():
     "pairs",
     generate_pairs()[:5]  # reduced to 5 tests
 )
-@pytest.mark.qapractice
 @pytest.mark.selenium
 def test_mult_select(start_selenium_driver, pairs):
     marker_1, marker_2, marker_3 = pairs
@@ -241,7 +229,6 @@ def test_mult_select(start_selenium_driver, pairs):
     assert "to go by {} to the {} {}".format(marker_2, marker_1, marker_3).lower() == result_text
 
 
-@pytest.mark.qapractice
 @pytest.mark.selenium
 def test_new_tab_link_page(start_selenium_driver):
     result = 'I am a new page in a new tab'
@@ -259,7 +246,6 @@ def test_new_tab_link_page(start_selenium_driver):
     assert result_text == result
 
 
-@pytest.mark.qapractice
 @pytest.mark.selenium
 def test_text_areas(start_selenium_driver):
     text_areas_page = TextAreasPage(start_selenium_driver, ["Q", "W", "E"])
@@ -280,7 +266,6 @@ def test_text_areas(start_selenium_driver):
         text_areas_page.value3.capitalize())
 
 
-@pytest.mark.qapractice
 @pytest.mark.selenium
 def test_confirm_alert(start_selenium_driver):
     confirm_alert_page = ConfirmAlertPage(start_selenium_driver)
@@ -296,7 +281,6 @@ def test_confirm_alert(start_selenium_driver):
     assert result_text == 'Ok'
 
 
-@pytest.mark.qapractice
 @pytest.mark.selenium
 def test_dismiss_alert(start_selenium_driver):
     confirm_alert_page = ConfirmAlertPage(start_selenium_driver)
@@ -312,7 +296,6 @@ def test_dismiss_alert(start_selenium_driver):
     assert result_text == 'Cancel'
 
 
-@pytest.mark.qapractice
 @pytest.mark.selenium
 def test_drag_and_drop_boxes(start_selenium_driver):
     result = 'Dropped!'
@@ -328,7 +311,6 @@ def test_drag_and_drop_boxes(start_selenium_driver):
     assert result_text == result
 
 
-@pytest.mark.qapractice
 @pytest.mark.selenium
 def test_drag_and_drop_image(start_selenium_driver):
     result = 'Dropped!'
@@ -344,7 +326,6 @@ def test_drag_and_drop_image(start_selenium_driver):
     assert result_text == result
 
 
-@pytest.mark.qapractice
 @pytest.mark.selenium
 def test_iframe_pop_up(start_selenium_driver):
     result = 'Correct!'
@@ -375,7 +356,6 @@ def test_iframe_pop_up(start_selenium_driver):
     assert result_text == result
 
 
-@pytest.mark.qapractice
 @pytest.mark.selenium
 def test_pop_up_modal_page(start_selenium_driver):
     result = 'select me or not'
@@ -395,7 +375,6 @@ def test_pop_up_modal_page(start_selenium_driver):
     assert result == result_text
 
 
-@pytest.mark.uitestingplayground
 @pytest.mark.selenium
 def test_progress_bar(start_selenium_driver):
     progressBar = ProgressBarPage(start_selenium_driver)
